@@ -1,0 +1,37 @@
+
+```
+library(knitr)
+library(leaflet)
+library(dplyr)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lat=15.3350, lng=76.4600, popup="Hampi, Karnataka") %>%
+  addMarkers(lat=14.5479,lng=74.3188, popup="Gokarna,Karnataka") %>%
+  addMarkers(lat=15.2361,lng=74.6173, popup="Dandeli,Karnataka") %>%
+  addMarkers(lat=14.0940,lng=74.4899, popup="Murdeshwar,Karnataka")
+```
+```
+plot(m)
+```
+##Mapping clusters
+
+```
+df <- data.frame(lat=runif(500, min=14.09, max = 15.33 ),
+                 lng=runif(500, min=74.31, max = 76.46 )) 
+```
+```
+df %>%
+leaflet() %>%
+addTiles() %>%  
+addMarkers(clusterOptions = markerClusterOptions())
+```
+```
+plot(df)
+```
